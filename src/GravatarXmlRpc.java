@@ -134,7 +134,7 @@ public class GravatarXmlRpc {
      * If Malformed URL then print stack trace
      */
 
-    public void gravatarSaveData(String email, String password, String base64, String rating) throws MalformedURLException {
+    public void gravSaveData(String email, String password, String base64, String rating) throws MalformedURLException {
 
         XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
         String emailHash = md5Hex(email);
