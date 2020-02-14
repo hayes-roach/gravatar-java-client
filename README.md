@@ -1,4 +1,4 @@
-# Gravatar-XML-RPC-API
+# Gravatar XML-RPC API Implementation for Java
 
 This is a java implementation for the Gravatar XML-RPC API: https://en.gravatar.com/site/implement/xmlrpc/
 
