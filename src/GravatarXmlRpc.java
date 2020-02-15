@@ -15,8 +15,6 @@ import java.util.*;
  * Licensed under MIT (https://github.com/hayes-roach/GravatarXmlRpc/LICENSE)
  =========================================================
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * To download the XML-RPC Apache dependency, click here: https://mvnrepository.com/artifact/org.apache.xmlrpc/xmlrpc/3.1.3
  */
 
 public class GravatarXmlRpc {
@@ -353,7 +351,7 @@ public class GravatarXmlRpc {
      * These bottom two functions are used hash the email address
      */
 
-    public String hex(byte[] array) {
+    private String hex(byte[] array) {
         StringBuilder sb = new StringBuilder();
         for (byte b : array) {
             sb.append(Integer.toHexString((b & 0xFF) | 0x100).substring(1, 3));
@@ -361,7 +359,7 @@ public class GravatarXmlRpc {
         return sb.toString();
     }
 
-    public String md5Hex(String message) {
+    private String md5Hex(String message) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             return hex(md.digest(message.getBytes("CP1252")));
