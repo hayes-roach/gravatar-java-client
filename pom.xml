@@ -9,10 +9,10 @@
     </parent>
 
     <groupId>com.roach.hayes</groupId>
-    <artifactId>gravatar-xml-rpc-api</artifactId>
+    <artifactId>gravatar-java-client</artifactId>
     <version>1.0.0</version>
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>Gravatar XML RPC API</description>
+    <description>Gravatar Java Client</description>
     <packaging>jar</packaging>
 
     <dependencies>

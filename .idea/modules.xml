@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GravatarXML-RPC.iml" filepath="$PROJECT_DIR$/GravatarXML-RPC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Gravatar-Java-Client.iml" filepath="$PROJECT_DIR$/Gravatar-Java-Client.iml" />
     </modules>
   </component>
 </project>
