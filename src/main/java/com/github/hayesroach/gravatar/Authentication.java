@@ -1,15 +1,31 @@
 package com.github.hayesroach.gravatar;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-@Builder
-@AllArgsConstructor
 public class Authentication {
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Authentication() {
+    }
+
+    public Authentication(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     private String email;
     private String password;
 }

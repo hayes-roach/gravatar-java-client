@@ -11,12 +11,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Gravatar-Java-Client" target="1.8" />
+      <module name="Gravatar-Java-Client" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Gravatar-Java-Client" options="-parameters" />
+      <module name="Gravatar-Java-Client" options="" />
     </option>
   </component>
 </project>
