@@ -34,13 +34,13 @@ public class GravatarClient {
     }
 
     /**
-     * Description: Checks whether a hash has a gravatar
+     * Description: Checks whether email hashes have a gravatar
      * @param hashes
      * List of hashes
      * @return
      * Returns a map of hashes to booleans
      */
-    public Map<String, Boolean> gravExists(List<String> hashes) throws XMLRPCException {
+    public Map<String, Boolean> gravatarExists(List<String> hashes) throws XMLRPCException {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("hashes", hashes);
         parameters.put(PASSWORD_LABEL, authentication.getPassword());
@@ -56,7 +56,7 @@ public class GravatarClient {
      * @return
      * Returns a map of emails and Address objects
      */
-    public Map<String, Address> gravAddresses() throws XMLRPCException {
+    public Map<String, Address> getAddresses() throws XMLRPCException {
         Map<String, String> parameters = new HashMap<>();
         parameters.put(PASSWORD_LABEL, authentication.getPassword());
         return (HashMap<String, Address>) client.call("grav.addresses", parameters);
@@ -65,7 +65,7 @@ public class GravatarClient {
     /**
      * Description: Returns an map of user images for this account and associated metadata array (image rating [0], image url [1])
      */
-    public Map<String, Object[]> gravUserImages() throws XMLRPCException {
+    public Map<String, Object[]> getUserImages() throws XMLRPCException {
         Map<String, String> parameters = new HashMap<>();
         parameters.put(PASSWORD_LABEL, authentication.getPassword());
         return (HashMap<String, Object[]>) client.call("grav.userimages", parameters);
@@ -83,7 +83,7 @@ public class GravatarClient {
      * @return
      * Returns 0 on failure, and userimage on success
      */
-    public String gravSaveData(String base64, int rating) throws XMLRPCException {
+    public String saveImageBase64(String base64, int rating) throws XMLRPCException {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put(PASSWORD_LABEL, authentication.getPassword());
         parameters.put("data", base64); // base64 img String
@@ -102,7 +102,7 @@ public class GravatarClient {
      * @return
      * Returns 0 on failure, and userimage on success
      */
-    public String gravSaveUrl(String url, int rating) throws XMLRPCException {
+    public String saveImageUrl(String url, int rating) throws XMLRPCException {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put(PASSWORD_LABEL, authentication.getPassword());
         parameters.put("url", url); // url of image
@@ -117,7 +117,7 @@ public class GravatarClient {
      * @return
      * Returns a map of email and a boolean. True if successful, False if failure
      */
-    public Map<String, Boolean> gravUseUserImage(String userImage, String... emails) throws XMLRPCException {
+    public Map<String, Boolean> setUserImage(String userImage, String... emails) throws XMLRPCException {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put(PASSWORD_LABEL, authentication.getPassword());
         parameters.put("userimage", userImage);
@@ -129,7 +129,7 @@ public class GravatarClient {
     /**
      * Description: Sets Gravatar to default Gravatar
      */
-    public Map<String, Boolean> gravRemoveImage(String... emails) throws XMLRPCException {
+    public Map<String, Boolean> setCurrentGravatarToDefault(String... emails) throws XMLRPCException {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put(PASSWORD_LABEL, authentication.getPassword());
         parameters.put("addresses", new ArrayList<>(Arrays.asList(emails)));
@@ -140,7 +140,7 @@ public class GravatarClient {
     /**
      * Description: Deletes the userimage associated with any email addresses on the account
      */
-    public Boolean gravDeleteUserImage(String userImage) throws XMLRPCException {
+    public Boolean deleteUserImage(String userImage) throws XMLRPCException {
         Map<String, String> parameters = new HashMap<>();
         parameters.put(PASSWORD_LABEL, authentication.getPassword());
         parameters.put("userimage", userImage);
@@ -148,12 +148,15 @@ public class GravatarClient {
     }
 
     /**
-     * Description: Removes a userimage from the account and any email addresses with which it is associated
+     * Description: Returns a map of emails and hashes
      */
-    public Map<String, Object> gravTest() throws XMLRPCException {
+    public Map<String, String> getEmailHashes(String... emails) {
         Map<String, String> parameters = new HashMap<>();
-        parameters.put(PASSWORD_LABEL, authentication.getPassword());
-        return (Map<String, Object>) client.call("grav.test", parameters);
+
+        for(String email : emails) {
+            parameters.put(email, md5Hex(email));
+        }
+        return parameters;
     }
 
 
