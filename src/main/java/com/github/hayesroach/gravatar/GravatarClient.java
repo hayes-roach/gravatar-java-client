@@ -1,4 +1,4 @@
-package gravatar;
+package com.github.hayesroach.gravatar;
 
 import de.timroes.axmlrpc.XMLRPCClient;
 import de.timroes.axmlrpc.XMLRPCException;

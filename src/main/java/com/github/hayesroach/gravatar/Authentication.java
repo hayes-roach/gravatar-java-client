@@ -1,4 +1,4 @@
-package gravatar;
+package com.github.hayesroach.gravatar;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
