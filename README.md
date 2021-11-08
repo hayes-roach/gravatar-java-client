@@ -7,14 +7,14 @@ This is a java implementation for the Gravatar XML-RPC API: https://en.gravatar.
 # Getting Started
 Gradle:
 ```groovy
-testCompile "io.github.hayes-roach:gravatar-java-client:1.0.2-RELEASE"
+testCompile "io.github.hayes-roach:gravatar-java-client:1.0.2"
 ```
 Maven:
 ```xml
 <dependency>
   <groupId>io.github.hayes-roach</groupId>
   <artifactId>gravatar-java-client</artifactId>
-  <version>1.0.2-RELEASE</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 
