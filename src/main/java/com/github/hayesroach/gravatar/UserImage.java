@@ -2,9 +2,18 @@ package com.github.hayesroach.gravatar;
 
 public class UserImage {
 
-    public UserImage(int rating, String url) {
+    public UserImage(String id, int rating, String url) {
+        this.id = id;
         this.rating = rating;
         this.url = url;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int getRating() {
@@ -25,4 +34,5 @@ public class UserImage {
 
     private int rating;
     private String url;
+    private String id;
 }
