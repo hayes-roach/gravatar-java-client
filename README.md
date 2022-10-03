@@ -7,96 +7,47 @@ This is a java implementation for the Gravatar XML-RPC API: https://en.gravatar.
 # Getting Started
 Gradle:
 ```groovy
-testCompile "io.github.hayes-roach:gravatar-java-client:1.0.2"
+testCompile "io.github.hayes-roach:gravatar-java-client:1.0.3"
 ```
 Maven:
 ```xml
 <dependency>
   <groupId>io.github.hayes-roach</groupId>
   <artifactId>gravatar-java-client</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 </dependency>
 ```
 
 ## Initialization
 ```Java
-Authentication authentication = new Authentication("test@email.com", "testpassword123");
-GravatarClient gravatarClient = new GravatarClient(authentication);
-
-// then you can use client methods below ...
+GravatarClient gravatarClient = new GravatarClient("gravatar@email.com", "password");
 ```
 
-# Examples
-1. [ Check whether email hashes have a Gravatar ](#ex1)
-2. [ Get map of userimages and associated Address object ](#ex2)
-3. [ Get map of userimages and associated metadata array ](#ex3)
-4. [ Save Base64 String as userimage  ](#ex4)
-5. [ Save URL String as userimage ](#ex5)
-6. [ Set current userimage ](#ex6)
-7. [ Set current Gravatar to default userimage ](#ex7)
-8. [ Delete userimage ](#ex8)
-9. [ Get Email Hashes ](#ex9)
+# Example Usage
+```java
+GravatarClient client = new GravatarClient("gravatar@email.com", "gravatar_password");
 
+// checks if an email address has a Gravatar
+Boolean exists = client.gravatarExists("grav@mail.com");
 
-<a name="ex1"></a>
-## Check whether hashes have a Gravatar
-```Java
-// put code here
-```
+// gets the list of emails associated with the account
+List<String> emails = client.getEmails();
 
-<a name="ex2"></a>
-## Get map of userimages and associated Address object
-```Java
-// put code here
-```
+// gets the current active Gravatar for the account
+Gravatar gravatar = client.getCurrentGravatar("gravatar@email.com");
 
-<a name="ex3"></a>
-## Get map of userimages and associated metadata array
-- MetadataArray[0] = image rating
-- MetadataArray[1] = image url
+// returns a list of all of the available Gravatars associated with the account
+List<Gravatar> allGravatars = client.getAllGravatars();
 
-```Java
-// put code here
-```
+// Uploads a Gravatar to the account. Can upload using a Base64 String, File, InputStream or URL
+Gravatar uploadedGravatar = client.upload(new URL("https://play-lh.googleusercontent.com/ZvMvaLTdYMrD6U1B3wPKL6siMYG8nSTEnzhLiMsH7QHwQXs3ZzSZuYh3_PTxoU5nKqU"), Rating.PG);
 
-<a name="ex4"></a>
-## Save Base64 String as userimage 
-Saves binary image data as a userimage for this account. It does not SET the image as the users active Gravatar. Use the [gravSetUserimage()](#ex6) function to do that.
-```Java
-// put code here
-```
+// Sets a Gravatar on the account as the active gravatar
+Boolean gravatarIsSet = client.setGravatar(uploadedGravatar);
 
-<a name="ex5"></a>
-## Save URL String as userimage
-Reads an image via its URL and saves that as a userimage for this account. It does not SET the image as the users active Gravatar. Use the [gravSetUserimage()](#ex6) function to do that.
-```Java
-// put code here
-```
+// Removes the active Gravatar for the account, and a default image will be used instead.
+client.removeActiveGravatar();
 
-<a name="ex6"></a>
-## Set Current userimage
-Sets a userimage as the current gravatar for one of more email addresses on this account
-```Java
-// put code here
-```
-
-<a name="ex7"></a>
-## Set current Gravatar to default userimage
-Sets Gravatar to default Gravatar
-```Java
-// put code here
-```
-
-<a name="ex8"></a>
-## Delete userimage
-Deletes the userimage associated with any email addresses on the account
-```Java
-// put code here
-```
-
-<a name="ex9"></a>
-## Get email hashes
-Returns a map of emails and hashes
-```Java
-// put code here
+// Deletes a Gravatar from an account
+client.deleteGravatar(uploadedGravatar);
 ```

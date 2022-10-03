@@ -10,7 +10,7 @@
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>A Gravatar Java Client library that is used to communicate with the Gravatar XML-RPC API</description>
-    <url>https://github.com/hayes-roach/Gravatar-Java-Client</url>
+    <url>https://github.com/hayes-roach/gravatar-java-client</url>
 
     <licenses>
         <license>
