@@ -5,13 +5,13 @@ import java.util.Objects;
 public class Gravatar {
 
     public Gravatar(String id, Rating rating, String url) {
-        this.id = id; // todo: set default to 0 : if no gravatar is set
+        this.id = id;
         this.rating = rating;
         this.url = url;
     }
 
     public Gravatar(String id, Rating rating) {
-        this.id = id; // todo: set default to 0 : if no gravatar is set
+        this.id = id;
         this.rating = rating;
     }
 
